@@ -40,7 +40,7 @@ for line in sys.stdin:
     # is the new key different than the previous key?
     # This means the line starts with a new key (key changes e.g. from "Visa" to "Cash")
     # Remember that our keys are sorted
-    if previous_key != None and previous_key != key:
+    if previous_key != None and previous_key != key and count_of_values >= 114:
         # Then write the result of the old key (Key=category, Value= Sum of Sales)
         # to the standart output (stdout)
         # Key and value are seperated by a tab (\t)
@@ -56,6 +56,6 @@ for line in sys.stdin:
     count_of_values += 1
     # the previous key for the next iteration is the current key of the this iteration 
     previous_key = key
-
-# write the last result to stdout
-sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
+if count_of_values >=114: 
+    # write the last result to stdout
+    sys.stdout.write("{0}\t{1}\n".format(previous_key, count_of_values))
